@@ -19,22 +19,28 @@ html {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-.root {
-    margin: 0 auto;
-    border-radius: 10px;
+
+/* .root {
+   width: 100vw;
+    height: 100vh; 
+} */
+.app {
+  margin: 0 auto;
+  border-radius: 10px;
   width: 65vw;
   background-color: grey;
+  min-height: 540px;
 }
 .header {
   font-size: 4rem;
-  margin: 50px auto ;
+  margin: 50px auto;
   text-align: center;
 }
 
-.rules{
-    margin: 0 auto 30px;
-    text-align: center;
-    font-size: 2rem;
+.rules {
+  margin: 0 auto 30px;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .players {
@@ -58,6 +64,11 @@ html {
   padding: 20px;
   border-radius: 5px;
 }
+
+.options img:hover {
+  transform: translate(1%, 3%);
+}
+
 .playerDiv,
 .computerDiv {
   /* display: flex; */
@@ -77,3 +88,12 @@ html {
   width: 300px;
 }
 
+.startBtn {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  padding: 10px;
+  /* margin: 200px 200px 200px 200px; */
+  align-items: center;
+  justify-content: center;
+}

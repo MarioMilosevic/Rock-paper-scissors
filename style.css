@@ -1,0 +1,39 @@
+html {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.header{
+    font-size: 4rem;
+    margin: 100px auto 0;
+    text-align: center;
+}
+.players{
+display: flex;
+margin:0 auto;
+border: 1px solid black;
+width: 90%;
+height: 425px;
+justify-content: space-around;
+}
+
+.playerDiv, .computerDiv{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid white;
+    width: 25%;
+
+}
+

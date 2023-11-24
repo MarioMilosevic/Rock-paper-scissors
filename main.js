@@ -29,9 +29,9 @@ const gameHtml = `<div class="app">
     <button class="startNewBtn">Start new game</button>
   </div>
   <div class="options">
-  <img src="img/rock.png" alt="rock" id="rock" />
-  <img src="img/paper.png" alt="paper" id="paper" />
-  <img src="img/scissors.png" alt="scissors" id="scissors" />
+  <img src="./img/rock.png" alt="rock" id="rock" />
+  <img src="./img/paper.png" alt="paper" id="paper" />
+  <img src="./img/scissors.png" alt="scissors" id="scissors" />
   </div>
   </div>`;
 

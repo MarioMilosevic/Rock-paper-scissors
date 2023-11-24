@@ -47,13 +47,48 @@ let computerResult = 0;
 // });
 
 function game(e) {
-  const playerChoice = e.target
-  playerChoice.style.backgroundColor = 'lightblue'
+  const playerChoice = e.target;
+  playerChoice.style.backgroundColor = "lightblue";
+  const randomChoice = Math.floor(Math.random() * gameOptions.length);
+  const computerChoice = gameOptions[randomChoice];
   setTimeout(() => {
-    const randomChoice = Math.floor(Math.random() * gameOptions.length);
-    const computerChoice = gameOptions[randomChoice];
-    computerChoice.style.backgroundColor = 'salmon'
+    console.log(computerChoice);
+    computerChoice.style.backgroundColor = "salmon";
+    if (playerChoice === rock && computerChoice === paper) {
+      computerWins();
+    } else if (playerChoice === rock && computerChoice === rock) {
+      return;
+    } else if (playerChoice === rock && computerChoice === scissors) {
+      playerWins();
+    } else if (playerChoice === paper && computerChoice === paper) {
+      return;
+    } else if (playerChoice === paper && computerChoice === rock) {
+      playerWins();
+    } else if (playerChoice === paper && computerChoice === scissors) {
+      computerWins();
+    } else if (playerChoice === scissors && computerChoice === rock) {
+      computerWins();
+    } else if (playerChoice === scissors && computerChoice === scissors) {
+      return;
+    } else if (playerChoice === scissors && computerChoice === paper) {
+      playerWins();
+    }
+    console.log(playerResult);
+    console.log(computerResult);
   }, 1000);
+  setTimeout(() => {
+    playerChoice.style.backgroundColor = "transparent";
+    computerChoice.style.backgroundColor = "transparent";
+  }, 2500);
 }
 
-gameOptions.forEach(option => option.addEventListener('click',game))
+gameOptions.forEach((option) => option.addEventListener("click", game));
+function computerWins() {
+  computerResult++;
+  computerScore.textContent = computerResult;
+}
+
+function playerWins() {
+  playerResult++;
+  playerScore.textContent = playerResult;
+}

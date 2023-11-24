@@ -36,7 +36,6 @@ const gameHtml = `<div class="app">
   </div>`;
 
 function startGame() {
-  console.log("radi");
   root.innerHTML = gameHtml;
   const app = document.querySelector(".app");
   const playerScore = document.querySelector("#playerScore");
@@ -83,6 +82,7 @@ function startGame() {
           playerWins();
         }
         if (playerResult === maxScore) {
+    
           declareWinner(`Player`);
         } else if (computerResult === maxScore) {
           declareWinner(`Computer`);
@@ -112,7 +112,7 @@ function startGame() {
       modal.classList.remove("hidden");
       overlay.classList.remove("hidden");
       gameFinished = true;
-    }, 1500);
+    }, 2000);
   }
   startNewBtn.addEventListener("click", startGame);
 }

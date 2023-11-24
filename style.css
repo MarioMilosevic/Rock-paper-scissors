@@ -21,14 +21,14 @@ html {
 }
 
 .root {
-   height: 2000px;
+  height: 2000px;
 }
 .app {
   margin: 0 auto;
   border-radius: 10px;
   width: 65vw;
   background-color: grey;
-  min-height: 540px;
+  min-height: 620px;
 }
 .header {
   font-size: 4rem;
@@ -97,10 +97,9 @@ html {
   justify-content: center;
 }
 
-
-
-.winner{
-margin: 20px auto 0;
-text-align: center;
-font-size: 3rem;
+.winner {
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 3rem;
 }

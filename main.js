@@ -18,7 +18,7 @@ const gameHtml = `<div class="app">
     </div>
   </div>
 </div>
-<div class="winner hidden"></div>
+<div class="winner"></div>
 <div class="options">
   <img src="img/rock.png" alt="rock" id="rock" />
   <img src="img/paper.png" alt="paper" id="paper" />
@@ -35,10 +35,10 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
 const gameOptions = [rock, paper, scissors];
+const maxScore = 2
 
 let playerResult = 0;
 let computerResult = 0;
-
 // rock.addEventListener("click", function () {
 //   rock.style.backgroundColor = "lightblue";
 // });
@@ -76,15 +76,15 @@ function game(e) {
     } else if (playerChoice === scissors && computerChoice === paper) {
       playerWins();
     } 
-    if(playerResult === 2){
+    if(playerResult === maxScore){
       winner.textContent = 'Player won !'
+      gameOptions.forEach(img => img.disabled = true)
       console.log('Player won');
-    } else if (computerResult === 2){
+    } else if (computerResult === maxScore){
       winner.textContent = 'Computer won !'
+      gameOptions.forEach(img => img.disabled = true)
       console.log('Computer won');
     } 
-    console.log(playerResult);
-    console.log(computerResult);
   }, 1000);
   setTimeout(() => {
     playerChoice.style.backgroundColor = "transparent";
@@ -94,6 +94,7 @@ function game(e) {
 }
 
 gameOptions.forEach((option) => option.addEventListener("click", game));
+
 function computerWins() {
   computerResult++;
   computerScore.textContent = computerResult;

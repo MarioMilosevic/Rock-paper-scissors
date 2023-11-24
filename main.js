@@ -18,7 +18,8 @@ const gameHtml = `<div class="app">
     </div>
   </div>
 </div>
-<div class="winner"></div>
+<div class="winner hidden"></div>
+<div class="modalOverlay hidden"></div>
 <div class="options">
   <img src="img/rock.png" alt="rock" id="rock" />
   <img src="img/paper.png" alt="paper" id="paper" />
@@ -29,13 +30,14 @@ root.innerHTML = gameHtml;
 const app = document.querySelector(".app");
 const playerScore = document.querySelector("#playerScore");
 const computerScore = document.querySelector("#computerScore");
-const winner = document.querySelector('.winner')
+const winner = document.querySelector(".winner");
+const modalOverlay = document.querySelector('.modalOverlay')
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
 const gameOptions = [rock, paper, scissors];
-const maxScore = 2
+const maxScore = 2;
 
 let playerResult = 0;
 let computerResult = 0;
@@ -46,51 +48,50 @@ let computerResult = 0;
 // paper.addEventListener("click", function () {
 //   paper.style.backgroundColor = "lightsalmon";
 // });
+let gameFinished = false;
 
 function game(e) {
-  // Get player choice with click
-  const playerChoice = e.target;
-  playerChoice.style.backgroundColor = "lightblue";
-  // Get computer choice
-  const randomChoice = Math.floor(Math.random() * gameOptions.length);
-  const computerChoice = gameOptions[randomChoice];
-  setTimeout(() => {
-    console.log(computerChoice);
-    computerChoice.style.backgroundColor = "salmon";
-    if (playerChoice === rock && computerChoice === paper) {
-      computerWins();
-    } else if (playerChoice === rock && computerChoice === rock) {
-      return;
-    } else if (playerChoice === rock && computerChoice === scissors) {
-      playerWins();
-    } else if (playerChoice === paper && computerChoice === paper) {
-      return;
-    } else if (playerChoice === paper && computerChoice === rock) {
-      playerWins();
-    } else if (playerChoice === paper && computerChoice === scissors) {
-      computerWins();
-    } else if (playerChoice === scissors && computerChoice === rock) {
-      computerWins();
-    } else if (playerChoice === scissors && computerChoice === scissors) {
-      return;
-    } else if (playerChoice === scissors && computerChoice === paper) {
-      playerWins();
-    } 
-    if(playerResult === maxScore){
-      winner.textContent = 'Player won !'
-      gameOptions.forEach(img => img.disabled = true)
-      console.log('Player won');
-    } else if (computerResult === maxScore){
-      winner.textContent = 'Computer won !'
-      gameOptions.forEach(img => img.disabled = true)
-      console.log('Computer won');
-    } 
-  }, 1000);
-  setTimeout(() => {
-    playerChoice.style.backgroundColor = "transparent";
-    computerChoice.style.backgroundColor = "transparent";
-  }, 2500);
-  
+  if (!gameFinished) {
+    // Get player choice with click
+    const playerChoice = e.target;
+    playerChoice.style.backgroundColor = "lightblue";
+    // Get computer choice
+    const randomChoice = Math.floor(Math.random() * gameOptions.length);
+    const computerChoice = gameOptions[randomChoice];
+    setTimeout(() => {
+      console.log(computerChoice);
+      computerChoice.style.backgroundColor = "salmon";
+      if (playerChoice === rock && computerChoice === paper) {
+        computerWins();
+      } else if (playerChoice === rock && computerChoice === rock) {
+        return;
+      } else if (playerChoice === rock && computerChoice === scissors) {
+        playerWins();
+      } else if (playerChoice === paper && computerChoice === paper) {
+        return;
+      } else if (playerChoice === paper && computerChoice === rock) {
+        playerWins();
+      } else if (playerChoice === paper && computerChoice === scissors) {
+        computerWins();
+      } else if (playerChoice === scissors && computerChoice === rock) {
+        computerWins();
+      } else if (playerChoice === scissors && computerChoice === scissors) {
+        return;
+      } else if (playerChoice === scissors && computerChoice === paper) {
+        playerWins();
+      }
+      if (playerResult === maxScore) {
+        declareWinner(`Player`);
+        gameFinished = true;
+      } else if (computerResult === maxScore) {
+        declareWinner(`Computer`);
+      }
+    }, 1000);
+    setTimeout(() => {
+      playerChoice.style.backgroundColor = "transparent";
+      computerChoice.style.backgroundColor = "transparent";
+    }, 2500);
+  }
 }
 
 gameOptions.forEach((option) => option.addEventListener("click", game));
@@ -100,7 +101,15 @@ function computerWins() {
   computerScore.textContent = computerResult;
 }
 
+function declareWinner(win) {
+  winner.textContent = `${win} won !`;
+  winner.classList.remove('hidden')
+  modalOverlay.classList.remove('hidden')
+  gameFinished = true;
+}
+
 function playerWins() {
   playerResult++;
   playerScore.textContent = playerResult;
 }
+

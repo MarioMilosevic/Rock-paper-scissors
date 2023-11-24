@@ -37,22 +37,19 @@ console.log(gameOptions);
 let playerResult = 0;
 let computerResult = 0;
 
-rock.addEventListener("click", function () {
-  rock.style.backgroundColor = "lightblue";
-});
+// rock.addEventListener("click", function () {
+//   rock.style.backgroundColor = "lightblue";
+// });
 
-paper.addEventListener("click", function () {
-  paper.style.backgroundColor = "lightsalmon";
-});
+// paper.addEventListener("click", function () {
+//   paper.style.backgroundColor = "lightsalmon";
+// });
 
-const game = function (element) {
-  element.style.backgroundColor = "lightblue";
-};
-
-function checkResult(choice) {
+function game(choice) {
   const playerChoice = choice;
   const randomChoice = Math.floor(Math.random() * gameOptions.length);
   const computerChoice = gameOptions[randomChoice];
+
   if (choice === rock && computerChoice === paper) {
     playerWins();
   } else if (choice === rock && computerChoice === rock) {
@@ -62,10 +59,18 @@ function checkResult(choice) {
   } else if (choice === paper && computerChoice === paper) {
     return;
   } else if (choice === paper && computerChoice === rock) {
+    playerWins();
+  } else if (choice === paper && computerChoice === scissors) {
     computerWins();
+  } else if (choice === scissors && computerChoice === rock) {
+    computerWins();
+  } else if (choice === scissors && computerChoice === scissors) {
+    return;
+  } else if (choice === scissors && computerChoice === paper) {
+    playerWins();
   }
 }
-checkResult();
+game();
 
 function computerWins() {
   computerResult++;

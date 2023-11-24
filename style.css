@@ -20,10 +20,9 @@ html {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
-/* .root {
-   width: 100vw;
-    height: 100vh; 
-} */
+.root {
+   height: 2000px;
+}
 .app {
   margin: 0 auto;
   border-radius: 10px;
@@ -96,4 +95,8 @@ html {
   /* margin: 200px 200px 200px 200px; */
   align-items: center;
   justify-content: center;
+}
+
+.computerChoice {
+  transform: translate();
 }

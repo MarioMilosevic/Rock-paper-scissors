@@ -28,11 +28,12 @@ root.innerHTML = gameHtml;
 const app = document.querySelector(".app");
 const playerScore = document.querySelector("#playerScore");
 const computerScore = document.querySelector("#computerScore");
+
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+
 const gameOptions = [rock, paper, scissors];
-console.log(gameOptions);
 
 let playerResult = 0;
 let computerResult = 0;
@@ -45,39 +46,14 @@ let computerResult = 0;
 //   paper.style.backgroundColor = "lightsalmon";
 // });
 
-function game(choice) {
-  const playerChoice = choice;
-  const randomChoice = Math.floor(Math.random() * gameOptions.length);
-  const computerChoice = gameOptions[randomChoice];
-
-  if (choice === rock && computerChoice === paper) {
-    playerWins();
-  } else if (choice === rock && computerChoice === rock) {
-    return;
-  } else if (choice === rock && computerChoice === paper) {
-    computerWins();
-  } else if (choice === paper && computerChoice === paper) {
-    return;
-  } else if (choice === paper && computerChoice === rock) {
-    playerWins();
-  } else if (choice === paper && computerChoice === scissors) {
-    computerWins();
-  } else if (choice === scissors && computerChoice === rock) {
-    computerWins();
-  } else if (choice === scissors && computerChoice === scissors) {
-    return;
-  } else if (choice === scissors && computerChoice === paper) {
-    playerWins();
-  }
-}
-game();
-
-function computerWins() {
-  computerResult++;
-  computerScore.textContent = computerChoice;
+function game(e) {
+  const playerChoice = e.target
+  playerChoice.style.backgroundColor = 'lightblue'
+  setTimeout(() => {
+    const randomChoice = Math.floor(Math.random() * gameOptions.length);
+    const computerChoice = gameOptions[randomChoice];
+    computerChoice.style.backgroundColor = 'salmon'
+  }, 1000);
 }
 
-function playerWins() {
-  playerResult++;
-  playerScore.textContent = playerResult;
-}
+gameOptions.forEach(option => option.addEventListener('click',game))

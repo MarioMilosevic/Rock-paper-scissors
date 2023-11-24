@@ -18,6 +18,7 @@ const gameHtml = `<div class="app">
     </div>
   </div>
 </div>
+<div class="winner hidden"></div>
 <div class="options">
   <img src="img/rock.png" alt="rock" id="rock" />
   <img src="img/paper.png" alt="paper" id="paper" />
@@ -28,7 +29,7 @@ root.innerHTML = gameHtml;
 const app = document.querySelector(".app");
 const playerScore = document.querySelector("#playerScore");
 const computerScore = document.querySelector("#computerScore");
-
+const winner = document.querySelector('.winner')
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
@@ -47,8 +48,10 @@ let computerResult = 0;
 // });
 
 function game(e) {
+  // Get player choice with click
   const playerChoice = e.target;
   playerChoice.style.backgroundColor = "lightblue";
+  // Get computer choice
   const randomChoice = Math.floor(Math.random() * gameOptions.length);
   const computerChoice = gameOptions[randomChoice];
   setTimeout(() => {
@@ -72,7 +75,14 @@ function game(e) {
       return;
     } else if (playerChoice === scissors && computerChoice === paper) {
       playerWins();
-    }
+    } 
+    if(playerResult === 2){
+      winner.textContent = 'Player won !'
+      console.log('Player won');
+    } else if (computerResult === 2){
+      winner.textContent = 'Computer won !'
+      console.log('Computer won');
+    } 
     console.log(playerResult);
     console.log(computerResult);
   }, 1000);
@@ -80,6 +90,7 @@ function game(e) {
     playerChoice.style.backgroundColor = "transparent";
     computerChoice.style.backgroundColor = "transparent";
   }, 2500);
+  
 }
 
 gameOptions.forEach((option) => option.addEventListener("click", game));

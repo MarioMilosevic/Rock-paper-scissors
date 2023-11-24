@@ -87,11 +87,13 @@ html {
   width: 300px;
 }
 
-.startBtn {
+
+
+.startNewBtn, .startBtn{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,80%);
   font-size: 2rem;
   width: 150px;
   height: 150px;
@@ -107,7 +109,7 @@ html {
 
 
 
-.winner {
+.modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -120,9 +122,11 @@ html {
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 2;
   text-align: center;
+  border-radius: 20px;
+  background-color: grey;
 }
 
-.modalOverlay {
+.overlay {
   position: absolute;
   top: 0;
   left: 0;

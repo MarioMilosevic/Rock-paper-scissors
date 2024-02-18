@@ -1,19 +1,19 @@
 "use strict";
-import { gameHtml } from "./constants";
-import initGame from "./constants";
+// import { gameHtml } from "./constants";
+// import initGame from "./constants";
 
 
 // Selectors
-const {
-  gameOptions,
-  app,
-  playerScore,
-  computerScore,
-  modal,
-  overlay,
-  startNewBtn,
-  winner,
-} = initGame();
+// const {
+//   gameOptions,
+//   app,
+//   playerScore,
+//   computerScore,
+//   modal,
+//   overlay,
+//   startNewBtn,
+//   winner,
+// } = initGame();
 const startBtnHtml = `<button class="startBtn">Start game</button>`;
 const startBtn = document.querySelector(".startBtn");
 const maxScore = 3;
@@ -22,6 +22,27 @@ let playerResult = 0;
 let computerResult = 0;
 
 let gameFinished = false;
+
+// const startBtnHtml = `<button class="startBtn">Start game</button>`;
+// const startBtn = document.querySelector(".startBtn");
+
+// Selectors
+// const {
+//   gameOptions,
+//   app,
+//   playerScore,
+//   computerScore,
+//   modal,
+//   overlay,
+//   startNewBtn,
+//   winner,
+// // } = initGame();
+// const maxScore = 3;
+
+// let playerResult = 0;
+// let computerResult = 0;
+
+// let gameFinished = false;
 
 function game(e) {
   if (!gameFinished) {
@@ -89,3 +110,5 @@ gameOptions.forEach((option) =>
   })
 );
 startNewBtn.addEventListener("click", startGame);
+
+
